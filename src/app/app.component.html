@@ -1,0 +1,22 @@
+<div class="min-h-screen bg-gray-100">
+  <nav class="bg-white shadow">
+    <div class="container flex justify-between items-center">
+      <a class="text-xl font-semibold" routerLink="/">Basic Frontend</a>
+      <div class="space-x-4 flex items-center">
+        <a class="text-sm text-gray-700" routerLink="/">Home</a>
+        <ng-container *ngIf="!auth.isLoggedIn()">
+          <a class="text-sm text-gray-700" routerLink="/register">Register</a>
+          <a class="text-sm text-gray-700" routerLink="/login">Login</a>
+        </ng-container>
+        <div *ngIf="auth.isLoggedIn()" class="flex items-center space-x-3">
+          <span class="text-sm text-gray-700">Hi, {{ auth.getUserName() }}</span>
+          <button (click)="auth.logout()" class="text-sm text-red-600">Logout</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <router-outlet></router-outlet>
+  </main>
+</div>

@@ -1,0 +1,15 @@
+<div class="bg-white rounded shadow p-6 mt-6">
+  <h2 class="text-2xl mb-4">Login</h2>
+  <div *ngIf="error" class="text-red-600 mb-3">{{ error }}</div>
+  <form #f="ngForm" (ngSubmit)="submit(f)">
+    <label class="block mb-2">Email
+      <input type="email" class="w-full border px-3 py-2" [(ngModel)]="email" name="email" required #emailModel="ngModel" />
+      <div *ngIf="emailModel.invalid && emailModel.touched" class="text-sm text-red-600">Enter a valid email.</div>
+    </label>
+    <label class="block mb-4">Password
+      <input type="password" class="w-full border px-3 py-2" [(ngModel)]="password" name="password" required #passwordModel="ngModel" />
+      <div *ngIf="passwordModel.invalid && passwordModel.touched" class="text-sm text-red-600">Password is required.</div>
+    </label>
+    <button class="bg-green-600 text-white px-4 py-2 rounded" type="submit" [disabled]="f.invalid">Login</button>
+  </form>
+</div>

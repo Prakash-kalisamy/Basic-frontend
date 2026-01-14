@@ -1,0 +1,23 @@
+<div class="bg-white rounded shadow p-6 mt-6">
+  <h2 class="text-2xl mb-4">Register</h2>
+  <div *ngIf="error" class="text-red-600 mb-3">{{ error }}</div>
+  <form #f="ngForm" (ngSubmit)="submit(f)">
+    <label class="block mb-2">Name
+      <input class="w-full border px-3 py-2" [(ngModel)]="name" name="name" required #nameModel="ngModel" />
+      <div *ngIf="nameModel.invalid && nameModel.touched" class="text-sm text-red-600">Name is required.</div>
+    </label>
+    <label class="block mb-2">Email
+      <input type="email" class="w-full border px-3 py-2" [(ngModel)]="email" name="email" required #emailModel="ngModel" />
+      <div *ngIf="emailModel.invalid && emailModel.touched" class="text-sm text-red-600">Enter a valid email.</div>
+    </label>
+    <label class="block mb-2">Password
+      <input type="password" class="w-full border px-3 py-2" [(ngModel)]="password" name="password" required minlength="6" #passwordModel="ngModel" />
+      <div *ngIf="passwordModel.invalid && passwordModel.touched" class="text-sm text-red-600">Password (min 6 chars) required.</div>
+    </label>
+    <label class="block mb-4">Confirm Password
+      <input type="password" class="w-full border px-3 py-2" [(ngModel)]="confirm" name="confirm" required #confirmModel="ngModel" />
+      <div *ngIf="confirmModel.invalid && confirmModel.touched" class="text-sm text-red-600">Please confirm your password.</div>
+    </label>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded" type="submit" [disabled]="f.invalid">Register</button>
+  </form>
+</div>
