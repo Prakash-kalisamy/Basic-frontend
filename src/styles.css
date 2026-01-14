@@ -6,4 +6,10 @@ html, body, app-root {
   height: 100%;
 }
 
-.container { @apply max-w-2xl mx-auto p-6; }
+body { @apply bg-gray-50 text-gray-900 antialiased; }
+
+.container { @apply max-w-3xl mx-auto p-6; }
+
+/* Form card */
+.card { @apply bg-white rounded-lg shadow p-6; }
+
