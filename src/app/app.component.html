@@ -2,17 +2,7 @@
   <nav class="bg-white shadow">
     <div class="container flex justify-between items-center">
       <a class="text-xl font-semibold" routerLink="/">Basic Frontend</a>
-      <div class="space-x-4 flex items-center" role="navigation" aria-label="Main">
-        <a class="text-sm text-gray-700" routerLink="/" routerLinkActive="font-medium text-blue-600">Home</a>
-        <ng-container *ngIf="!auth.isLoggedIn()">
-          <a class="text-sm text-gray-700" routerLink="/register" routerLinkActive="font-medium text-blue-600">Register</a>
-          <a class="text-sm text-gray-700" routerLink="/login" routerLinkActive="font-medium text-blue-600">Login</a>
-        </ng-container>
-        <div *ngIf="auth.isLoggedIn()" class="flex items-center space-x-3">
-          <span class="text-sm text-gray-700">Hi, {{ auth.getUserName() }}</span>
-          <button (click)="auth.logout()" class="text-sm text-red-600">Logout</button>
-        </div>
-      </div>
+      <!-- Desktop links (hidden on small screens) -->
       <div class="hidden md:flex space-x-4 items-center">
         <a class="text-sm text-gray-700" routerLink="/" routerLinkActive="font-medium text-blue-600">Home</a>
         <ng-container *ngIf="!auth.isLoggedIn()">
