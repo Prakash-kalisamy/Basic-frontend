@@ -13,6 +13,42 @@
           <button (click)="auth.logout()" class="text-sm text-red-600">Logout</button>
         </div>
       </div>
+      <div class="hidden md:flex space-x-4 items-center">
+        <a class="text-sm text-gray-700" routerLink="/" routerLinkActive="font-medium text-blue-600">Home</a>
+        <ng-container *ngIf="!auth.isLoggedIn()">
+          <a class="text-sm text-gray-700" routerLink="/register" routerLinkActive="font-medium text-blue-600">Register</a>
+          <a class="text-sm text-gray-700" routerLink="/login" routerLinkActive="font-medium text-blue-600">Login</a>
+        </ng-container>
+        <div *ngIf="auth.isLoggedIn()" class="flex items-center space-x-3">
+          <span class="text-sm text-gray-700">Hi, {{ auth.getUserName() }}</span>
+          <button (click)="auth.logout()" class="text-sm text-red-600">Logout</button>
+        </div>
+      </div>
+
+      <div class="md:hidden flex items-center">
+        <button aria-label="Toggle menu" (click)="toggleMobileMenu()" class="p-2 rounded-md focus:outline-none focus:ring">
+          <svg *ngIf="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg *ngIf="mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="mobileMenuOpen" class="md:hidden border-t">
+      <div class="p-4 space-y-2">
+        <a class="block text-gray-700" routerLink="/" (click)="toggleMobileMenu()">Home</a>
+        <ng-container *ngIf="!auth.isLoggedIn()">
+          <a class="block text-gray-700" routerLink="/register" (click)="toggleMobileMenu()">Register</a>
+          <a class="block text-gray-700" routerLink="/login" (click)="toggleMobileMenu()">Login</a>
+        </ng-container>
+        <div *ngIf="auth.isLoggedIn()" class="flex items-center space-x-3">
+          <span class="text-sm text-gray-700">Hi, {{ auth.getUserName() }}</span>
+          <button (click)="auth.logout()" class="text-sm text-red-600">Logout</button>
+        </div>
+      </div>
     </div>
   </nav>
 
